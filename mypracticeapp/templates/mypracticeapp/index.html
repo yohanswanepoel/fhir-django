@@ -1,0 +1,63 @@
+<!-- myapp/templates/myapp/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My FHIR Practice App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">My FHIR Practice App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Patients</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#appointments">Appointments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#notes">Notes</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col">
+            <h2>Patients</h2>
+            <ul>
+                {% for patient in patients %}
+                    <li><a href="{% url 'patient_detail' patient.id %}">{{ patient.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-8">
+            {% if selected_patient %}
+                <h2>{{ selected_patient.name }} - Patient Details</h2>
+                <ul>
+                    <li>ID: {{ selected_patient.id }}</li>
+                    <li>Active: {{ selected_patient.active }}</li>
+                    <li>Gender: {{ selected_patient.gender }}</li>
+                    <li>Birth Date: {{ selected_patient.birth_date }}</li>
+                    <li>Marital Status: {{ selected_patient.marital_status }}</li>
+                    <!-- Add other patient details as needed -->
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

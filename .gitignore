@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+.odo/env
+.odo/odo-file-index.json%
+
+.odo

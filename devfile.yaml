@@ -1,0 +1,74 @@
+commands:
+- exec:
+    commandLine: pip install -r requirements.txt
+    component: py-web
+    group:
+      isDefault: true
+      kind: build
+    workingDir: ${PROJECT_SOURCE}
+  id: pip-install-requirements
+- exec:
+    commandLine: python manage.py runserver 0.0.0.0:8000
+    component: py-web
+    group:
+      isDefault: true
+      kind: run
+    workingDir: ${PROJECT_SOURCE}
+  id: run-app
+- exec:
+    commandLine: python manage.py migrate
+    component: py-web
+    workingDir: ${PROJECT_SOURCE}
+  id: run-migrations
+- exec:
+    commandLine: pip install debugpy && export DEBUG_MODE=True && python -m debugpy
+      --listen 0.0.0.0:${DEBUG_PORT} manage.py runserver 0.0.0.0:8000 --noreload --nothreading
+    component: py-web
+    group:
+      kind: debug
+    workingDir: ${PROJECT_SOURCE}
+  id: debug
+components:
+- container:
+    args:
+    - tail
+    - -f
+    - /dev/null
+    endpoints:
+    - name: http-django
+      targetPort: 8000
+    - exposure: none
+      name: debug
+      targetPort: 5858
+    env:
+    - name: DEBUG_PORT
+      value: "5858"
+    image: registry.access.redhat.com/ubi9/python-39:1-161
+    mountSources: true
+  name: py-web
+metadata:
+  description: Django is a high-level Python web framework that enables rapid development
+    of secure and maintainable websites. Built by experienced developers, Django takes
+    care of much of the hassle of web development, so you can focus on writing your
+    app without needing to reinvent the wheel. It is free and open source, has a thriving
+    and active community, great documentation, and many options for free and paid-for
+    support.
+  displayName: Django
+  icon: https://static.djangoproject.com/img/logos/django-logo-positive.svg
+  language: Python
+  name: demo-day
+  projectType: Django
+  provider: Red Hat
+  tags:
+  - Django
+  - Python
+  - Pip
+  version: 2.1.0
+schemaVersion: 2.1.0
+starterProjects:
+- git:
+    remotes:
+      origin: https://github.com/yohanswanepoel/fhir-django
+  name: django-example
+variables:
+  fhir_url: https://fhir-server-fhir-route-default.apps.jdemo.sandbox1543.opentlc.com/fhir

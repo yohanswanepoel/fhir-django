@@ -35,11 +35,9 @@ components:
     - -f
     - /dev/null
     endpoints:
-    - name: http-django
+    - name: port-8000-tcp
+      protocol: tcp
       targetPort: 8000
-    - exposure: none
-      name: debug
-      targetPort: 5858
     env:
     - name: DEBUG_PORT
       value: "5858"
@@ -56,7 +54,7 @@ metadata:
   displayName: Django
   icon: https://static.djangoproject.com/img/logos/django-logo-positive.svg
   language: Python
-  name: demo-day
+  name: demosa
   projectType: Django
   provider: Red Hat
   tags:
@@ -68,7 +66,5 @@ schemaVersion: 2.1.0
 starterProjects:
 - git:
     remotes:
-      origin: https://github.com/yohanswanepoel/fhir-django
+      origin: https://github.com/devfile-samples/python-django-ex
   name: django-example
-variables:
-  fhir_url: https://fhir-server-fhir-route-default.apps.jdemo.sandbox1543.opentlc.com/fhir

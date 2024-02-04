@@ -50,6 +50,7 @@ def get_patient_detail(patient_id):
         fhir_data = response.json()
         patient = p.Patient(fhir_data)
         # Extract relevant patient details
+        # This should deploy
         patient_details = {
             'id': patient.id,
             'name': f'{patient.name[0].family}, {patient.name[0].given[0]}',
@@ -58,7 +59,7 @@ def get_patient_detail(patient_id):
             'birth_date': patient.birthDate.as_json,
             'marital_status': patient.maritalStatus, # Comment out this line as it is a purposed bug
             # 'marital_status': patient.maritalStatus.text, # Uncomment this line to have the right value
-            # Add other patient details as needed
+            # Add other patient details as needed Dhi
         }
         return patient_details
     else:

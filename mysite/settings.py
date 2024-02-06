@@ -52,7 +52,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'mysite.urls'
 
-FHIR_SERVER_BASE_URL = 'https://fhir-server-fhir-route-demo2.apps.jdemo.sandbox1973.opentlc.com/fhir'
+FHIR_SERVER_BASE_URL = 'https://fhir-server-fhir-route-demo2.apps.cluster-5825p.dynamic.redhatworkshops.io/fhir'
 
 TEMPLATES = [
     {

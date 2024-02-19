@@ -52,7 +52,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'mysite.urls'
 
-FHIR_SERVER_BASE_URL = 'https://fhir-server-fhir-route-swannie-demo.apps.ft-infra.gpslab.cbr.redhat.com/fhir'
+FHIR_SERVER_BASE_URL = 'http://fhir-server-fhir-service.common-tools/fhir'
 
 TEMPLATES = [
     {

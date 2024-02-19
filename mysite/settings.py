@@ -52,7 +52,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'mysite.urls'
 
-FHIR_SERVER_BASE_URL = 'http://fhir-server-fhir-service.common-tools/fhir'
+FHIR_SERVER_BASE_URL = 'http://fhir-server-fhir-service.common-tools:8080/fhir'
 
 TEMPLATES = [
     {

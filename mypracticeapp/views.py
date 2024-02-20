@@ -57,8 +57,8 @@ def get_patient_detail(patient_id):
             'active': patient.active,
             'gender': patient.gender,
             'birth_date': patient.birthDate.as_json,
-            'marital_status': patient.maritalStatus, # Comment out this line as it is a purposed bug
-            # 'marital_status': patient.maritalStatus.text, # Uncomment this line to have the right value
+            # 'marital_status': patient.maritalStatus, # Comment out this line as it is a purposed bug
+            'marital_status': patient.maritalStatus.text, # Uncomment this line to have the right value
             # Add other patient details as needed Dhi
         }
         return patient_details
